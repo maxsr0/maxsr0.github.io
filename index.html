@@ -60,11 +60,19 @@
   .navlinks a{text-decoration:none;font-size:14.5px;font-weight:600}
   .navlinks a:hover{color:var(--accent)}
   .themebtn{
-    font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;
     background:none;border:1.5px solid var(--ink);border-radius:999px;color:var(--ink);
-    padding:6px 14px;cursor:pointer;white-space:nowrap;
+    width:36px;height:36px;padding:0;cursor:pointer;
+    display:inline-flex;align-items:center;justify-content:center;flex:none;
   }
   .themebtn:hover{background:var(--ink);color:var(--paper)}
+  .themebtn svg{display:block}
+  .themebtn .icon-moon{display:none}
+  :root[data-theme="dark"] .themebtn .icon-sun{display:none}
+  :root[data-theme="dark"] .themebtn .icon-moon{display:block}
+  @media(prefers-color-scheme:dark){
+    :root:not([data-theme="light"]) .themebtn .icon-sun{display:none}
+    :root:not([data-theme="light"]) .themebtn .icon-moon{display:block}
+  }
   @media(max-width:600px){
     .nav{flex-wrap:wrap;height:auto;padding-top:10px;padding-bottom:10px;row-gap:4px}
     .nav .mono{font-size:11px;letter-spacing:.1em}
@@ -169,7 +177,7 @@
       <a href="#notes">Notes</a>
       <a href="resume.pdf">Resume</a>
       <a href="#contact">Contact</a>
-      <button class="themebtn" id="themeToggle" type="button" aria-label="Toggle dark mode">Dark</button>
+      <button class="themebtn" id="themeToggle" type="button" aria-label="Switch to dark mode"><svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg><svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
     </nav>
   </div>
 </header>
@@ -295,7 +303,7 @@
     return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
   }
   function syncToggle() {
-    if (toggle) toggle.textContent = isDark() ? "Light" : "Dark";
+    if (toggle) toggle.setAttribute("aria-label", isDark() ? "Switch to light mode" : "Switch to dark mode");
   }
   if (toggle) {
     toggle.addEventListener("click", function () {
