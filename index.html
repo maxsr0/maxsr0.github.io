@@ -93,8 +93,10 @@
     color:transparent;
     -webkit-text-stroke:2.5px var(--ink);
   }
-  h1 .ch{display:inline-block;transition:transform .18s ease,color .18s ease}
-  h1 .ch:hover{transform:translateY(-8px) rotate(-2deg);color:var(--accent);-webkit-text-stroke:0}
+  h1 .ch{display:inline-block;transition:transform .3s cubic-bezier(.34,1.56,.64,1),color .18s ease}
+  h1 .ch:hover{transform:translateY(-10px) rotate(-3deg);color:var(--accent);-webkit-text-stroke:0}
+  h1 .ch:nth-child(3n+2):hover{transform:translateY(-7px) rotate(4deg) scale(1.06)}
+  h1 .ch:nth-child(3n):hover{transform:translateY(-13px) rotate(-1deg)}
   .herosub{
     display:flex;justify-content:space-between;align-items:flex-end;gap:28px;flex-wrap:wrap;
     padding:34px 0 30px;
