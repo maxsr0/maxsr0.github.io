@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Maxwell Robbins</title>
 <meta name="description" content="Maxwell Robbins: computer science student at the University of Cincinnati, based in Erlanger, Kentucky.">
-<meta name="theme-color" content="#121216">
+<meta name="theme-color" content="#141518">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <!-- Open Graph / Twitter: share-preview card (og-image.png, 1200x630) -->
 <meta property="og:title" content="Maxwell Robbins">
@@ -397,7 +397,7 @@ body.is-dragging, body.is-dragging .wp { cursor: grabbing; }
   <section class="section wrap" id="index" aria-labelledby="index-h">
     <div class="section-head">
       <h2 id="index-h">Index</h2>
-      <p class="caption">Selected things, 2026 to now</p>
+      <p class="caption">Selected work</p>
     </div>
     <ul class="work">
       <li>
@@ -431,6 +431,20 @@ body.is-dragging, body.is-dragging .wp { cursor: grabbing; }
         </a>
       </li>
       <li>
+        <a class="row" href="/chessapp/">
+          <span class="fill" aria-hidden="true"></span>
+          <span class="meta"><span class="mono">2026</span><span>Full stack</span></span>
+          <span class="body">
+            <span class="title">ChessIQ</span>
+            <span class="desc">Imports your Chess.com games, has Stockfish grade every move, and shows the patterns behind your losses, then builds a study plan from them. FastAPI, Postgres, and Next.js. I built it to learn agentic development with Claude Code: writing specs, reviewing AI-written code, and shipping it to production.</span>
+          </span>
+          <span class="go" aria-hidden="true">
+            <svg class="a1" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg>
+            <svg class="a2" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg>
+          </span>
+        </a>
+      </li>
+      <li>
         <a class="row" href="resume.pdf">
           <span class="fill" aria-hidden="true"></span>
           <span class="meta"><span class="mono">PDF</span><span>One page</span></span>
@@ -454,14 +468,14 @@ body.is-dragging, body.is-dragging .wp { cursor: grabbing; }
     </div>
     <div class="notes-grid">
       <div class="prose">
-        <p>I'm a first-year computer science student at the University of Cincinnati, in the co-op program, which splits my degree between classes and full-time work semesters. <strong>I'm looking for a software co-op for Summer 2027.</strong> In addition, I'm one of 12 S-STEM Scholars in my year.</p>
+        <p>I'm a first-year computer science student at the University of Cincinnati, in the co-op program, which splits my degree between classes and full-time work semesters. <strong>I'm looking for a software co-op for Summer 2027.</strong> I'm also one of 12 S-STEM Scholars in my year.</p>
         <p>Robotics is where I learned to build things that have to work on the first try. I captained my high school team to a <strong>Kentucky state championship</strong>, mentored more than 35 middle school students, and then started a college team so I could keep competing. Long term, I want to write software for machines that move: robots, autonomous vehicles, and everything near them.</p>
       </div>
       <dl class="facts">
         <div><dt>Based in</dt><dd>Erlanger, Kentucky</dd></div>
         <div><dt>Studying</dt><dd>Computer Science, University of Cincinnati, class of 2031</dd></div>
         <div><dt>Currently</dt><dd><span class="status">Open to Summer 2027 co-op roles</span></dd></div>
-        <div><dt>Tools</dt><dd>C++, Python, Git and GitHub</dd></div>
+        <div><dt>Tools</dt><dd>C++, Python, Git and GitHub, Claude Code</dd></div>
       </dl>
     </div>
   </section>
@@ -542,7 +556,7 @@ body.is-dragging, body.is-dragging .wp { cursor: grabbing; }
   function syncThemeUI() {
     var dark = root.getAttribute('data-theme') !== 'light';
     themeBtn.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
-    meta.setAttribute('content', dark ? '#121216' : '#f1f0eb');
+    meta.setAttribute('content', dark ? '#141518' : '#f1f0eb');
   }
   syncThemeUI();
   themeBtn.addEventListener('click', function () {
@@ -586,7 +600,7 @@ body.is-dragging, body.is-dragging .wp { cursor: grabbing; }
   var active = null;
   function placeIndicator() {
     var link = spyLinks.filter(function (a) { return a.dataset.spy === active; })[0];
-    spyLinks.forEach(function (a) { a.toggleAttribute('aria-current', a === link); if (a === link) a.setAttribute('aria-current', 'true'); });
+    spyLinks.forEach(function (a) { if (a === link) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
     if (!link) { ind.style.opacity = 0; return; }
     var nr = nav.getBoundingClientRect(), lr = link.getBoundingClientRect();
     ind.style.width = (lr.width - 20) + 'px';
